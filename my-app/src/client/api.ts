@@ -2,7 +2,7 @@ import { UserProps } from "../types/types";
 
 const apiUrl = "https://jsonplaceholder.typicode.com/users";
 
-export const getUsers = (): Promise<UserProps[]> =>
+export const fetchUsers = (): Promise<UserProps[]> =>
   fetch(apiUrl).then((response) => response.json());
 
 export const addUser = (user: UserProps): Promise<UserProps> =>

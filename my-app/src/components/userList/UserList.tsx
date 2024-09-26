@@ -1,22 +1,19 @@
-import { FC } from "react";
+import { memo } from "react";
 import { MemberCard } from "../memberCard";
 import { ButtonWithLabel } from "../buttonWithLabel";
-import { UserProps } from "../../types/types";
+import { useGetUsers } from "../../hooks/useGetUsers";
 
-export interface UserListProps {
-  users: UserProps[];
-  onClickMoreUsers: () => void;
-}
+export const UserList = memo(() => {
+  const { users, getUsers } = useGetUsers();
 
-export const UserList: FC<UserListProps> = ({ users, onClickMoreUsers }) => {
   return (
     <>
       {users.map((user, idx) => (
         <MemberCard key={idx} {...user} />
       ))}
-      <ButtonWithLabel onClick={onClickMoreUsers} label="нажми меня!">
+      <ButtonWithLabel onClick={getUsers} label="нажми меня!">
         more users
       </ButtonWithLabel>
     </>
   );
-};
+});
